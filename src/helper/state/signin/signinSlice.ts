@@ -84,17 +84,29 @@ const signinSlice = createSlice({
     builder
       .addCase(signinAsync.pending, state => {
         state.isSigninLoading = true;
+        state.isSigninSuccess = false;
+        state.isSigninFail = false;
+        state.signinError = '';
+        state.userData = null;
         console.log('');
         console.log('pending');
       })
       .addCase(signinAsync.fulfilled, (state,action:PayloadAction<UserData>) => {
+        state.isSignin = true;
+        state.isSigninLoading = false;
         state.isSigninSuccess = true;
+        state.isSigninFail = false;
+        state.signinError = '';
         state.userData = action.payload;
         console.log('fulfilled');
       })
       .addCase(signinAsync.rejected, (state, action) => {
+        state.isSignin = false;
+        state.isSigninLoading = false;
+        state.isSigninSuccess = false;
         state.isSigninFail = true;
         state.signinError = action.error.message || '500';
+        state.userData = null;
         console.log(action.error.message);
         console.log('rejected');
       });
