@@ -1,15 +1,10 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-
-
-
-
 @Schema({
     timestamps: true,
     versionKey: false,
 })
 
 export class User {
-
     @Prop({})
     name: string;
 
@@ -41,7 +36,7 @@ export class User {
     address: string;
 
     @Prop({ type: Date, default: Date.now })
-    createdAt: Date;
+    createdAt?: Date;
 
     @Prop({ type: Date, default: Date.now })
     updatedAt: Date;

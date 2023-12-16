@@ -10,7 +10,6 @@ export class UpdateUserDto{
     readonly city: string;
     readonly state: string;
     readonly address: string;
-    readonly createdAt: Date;
     readonly updatedAt: Date;
     
 }

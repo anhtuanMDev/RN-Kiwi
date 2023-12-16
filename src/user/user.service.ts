@@ -28,6 +28,14 @@ export class UserService {
     return user;
   }
 
+  async login(email: string, password: string): Promise<User> {
+    const user = await this.userModel.findOne({ email, password });
+    if (!user) {
+      throw new NotFoundException(`User with email: ${email} not found`);
+    }
+    return user;
+  }
+
   async updateUserByID(id: string, user: User): Promise<User> {
     return await this.userModel.findByIdAndUpdate(id, user, {
       new: true,
