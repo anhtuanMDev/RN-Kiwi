@@ -7,19 +7,28 @@ import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
 
 export class Restaurant {
 
-    @Prop({})
+    @Prop({
+        required: true,
+        unique: true,
+    })
     owner: string;
 
-    @Prop({})
+    @Prop({
+        required: true,
+    })
     name: string;
 
     @Prop({})
     description: string;
 
-    @Prop({})
+    @Prop({
+        required: true
+    })
     address: string;
 
-    @Prop({})
+    @Prop({
+        required: true
+    })
     city: string;
 
     @Prop({})
@@ -28,10 +37,15 @@ export class Restaurant {
     @Prop({})
     country: string;
 
-    @Prop({})
+    @Prop({
+        required: true
+    })
     phone: string;
 
-    @Prop({})
+    @Prop({
+        required: true,
+        unique: true,
+    })
     email: string;
 
     @Prop({type: Date, default: Date.now})

@@ -1,14 +1,25 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+
+export enum Gender {
+    male = "Male",
+    female = "Female",
+}
+
 @Schema({
     timestamps: true,
     versionKey: false,
 })
 
 export class User {
-    @Prop({})
+    @Prop({
+        required: true,
+    })
     name: string;
 
-    @Prop({})
+    @Prop({
+        required: true,
+        unique: true,
+    })
     email: string;
 
     @Prop({})
@@ -18,7 +29,7 @@ export class User {
     phone: string;
 
     @Prop({})
-    gender: string;
+    gender: Gender;
 
     @Prop({})
     age: number;
@@ -32,7 +43,9 @@ export class User {
     @Prop({})
     state: string;
 
-    @Prop({})
+    @Prop({
+        required: true,
+    })
     address: string;
 
     @Prop({ type: Date, default: Date.now })
