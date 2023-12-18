@@ -1,0 +1,92 @@
+Hai loại giá trị làm việc với Animated là:
+
+Animated.Value : Cho giá trị đơn lẻ
+Animated.ValueXY : Cho giá trị vector
+
+
+Interpolate
+
+Interpolate được sử dụng để thay đổi giá trị (Animated.Value) trong quá trình animation
+
+const position = Animated.Value(0); // tạo giá trị Animated
+const rotate() = position.interpolate(){
+    inputRange: [0, 100], // Khoảng giá trị đầu vào
+    outputRange: ['0deg', '360deg'], // Khoảng giá trị đầu ra (độ)
+}
+
+
+
+Animated có 3 loại hoạt ảnh là:
+
+Animated.decay() : Chạy với 1 vận tốc nhất định ban đầu và giảm dần khi kết thúc
+Animated.string() : Cung cấp một mô hình vật lý lò xo cơ bản
+Animated.timing() : Tạo hiệu ứng hoạt hình cho một giá trị theo thời gian bằng cách sử dụng các chức năng easing
+
+
+
+Sử dụng animated
+
+Animated.timing({
+    Những hoạt động sẽ làm khi animated đang chạy
+}).start(({finished})=>{
+    Những hoạt động sẽ làm khi animated đã chạy xong
+})
+
+Giải thích:
+
+Animated khởi chạy phương thức bằng start và khi kết thúc sẽ callback phương thức finished khi animated
+đã chạy xong.
+
+Ngoài ra còn có phương thức stop sẽ được gọi nếu animated bị dừng lại vì 1 cử chỉ hoặc bị gián đoạn
+bởi một animation khác. (Khi đó finished sẽ trả về giá trị false)
+
+Animated.timing({
+    Những hoạt động sẽ làm khi animated đang chạy
+}).start(({finished})=>{
+    if(finished) Những hoạt động sẽ làm khi animated đã chạy xong
+    else Những hoạt động sẽ làm khi animated chưa chạy xong
+})
+
+
+
+Native Driver
+
+Được dùng để gửi các giá trị hoạt ảnh tới native trước khi chạy hoạt ảnh
+giúp cho hoạt ảnh được chạy trực tiếp trên thread chính mà không cần phải kết nối
+với từng khung hình
+
+Ngoài ra nếu dùng native drive thì khi animation bắt đầu chạy luồng JS có thể bị 
+chặn mà không ảnh hưởng đến hoạt ảnh 
+
+
+
+Các thành phần có thể animation
+
+Animated.View
+Animated.Text
+Animated.Image
+Animated.ScrollView
+Animated.FlatList
+Animated.SectionList
+
+cũng có thể dùng createAnimatedComponent() để tạo các thành phần animation
+(nhưng phải npm install)
+
+
+
+Phối animation
+
+Animated.delay() Bắt đầu một animation sau một độ trễ nhất định.
+Animated.parallel() Bắt đầu một số animation cùng một lúc.
+Animated.sequence() Bắt đầu các animation theo thứ tự, đợi cho mỗi animation hoàn thành trước khi bắt đầu tiếp theo.
+Animated.stagger() Bắt đầu animation theo thứ tự và song song, nhưng với độ trễ liên tiếp.
+
+
+
+Tương tác các giá trị Animated
+
+Animated.add()
+Animated.subtract()
+Animated.divide()
+Animated.modulo()
+Animated.multiply()
