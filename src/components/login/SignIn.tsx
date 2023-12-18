@@ -47,7 +47,7 @@ const SignIn = () => {
     console.log('password:' + password);
   };
 
-  const AlertModal = (prop : {reason: string}) => {
+  const AlertModal = (prop : {reason?: string}) => {
     return (
       <View style={[styles.modalContainer]}>
         <View style={[components.modalView]}>
@@ -66,7 +66,7 @@ const SignIn = () => {
         transparent={true}
         visible={true}
         >
-          <AlertModal/>
+          <AlertModal reason='Testing'/>
         </Modal>
       <StatusBar
         barStyle="dark-content"
