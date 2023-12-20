@@ -14,6 +14,7 @@ export class DishController {
 
   @Post('create')
   async createDish(@Body() dish: CreateDishDto) {
+    console.log("success");
     return this.dishService.create(dish);
   }
 

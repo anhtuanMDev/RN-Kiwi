@@ -28,6 +28,7 @@ export class CreateDishDto {
 
     @Prop({
         required: true,
+        type: Object,
     })
     timeMade: TimeMade;
 

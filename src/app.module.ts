@@ -6,7 +6,6 @@ import { UserModule } from './user/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { RestaurantModule } from './restaurant/restaurant.module';
 import { DishModule } from './dish/dish.module';
-import { ControllerModule } from './service/controller/controller.module';
 import { AdminModule } from './admin/admin.module';
 
 @Module({
@@ -19,7 +18,6 @@ import { AdminModule } from './admin/admin.module';
     UserModule,
     RestaurantModule,
     DishModule,
-    ControllerModule,
     AdminModule],
   controllers: [AppController],
   providers: [AppService],

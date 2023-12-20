@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Restaurant } from './schemas/user.schema';
+import { Restaurant } from './schemas/restaurant.schema';
 import mongoose from 'mongoose';
 import { UpdateRestaurantDto } from './dto/update-restaurant';
 
@@ -24,6 +24,12 @@ export class RestaurantService {
   async findByID(id: string): Promise<Restaurant> {
     const restaurant = await this.restaurantModel.findById(id);
     return restaurant;
+  }
+
+  async checkOwner(id: string): Promise<boolean> {
+    const restaurant = await this.restaurantModel.find({owner: id});
+    console.log("check: " + restaurant);
+    return restaurant.length === 0;
   }
 
   async create(restaurant: Restaurant): Promise<Restaurant> {

@@ -1,4 +1,7 @@
+import { Prop } from "@nestjs/mongoose";
+
 export class CreateRestaurantDto {
+    @Prop({required: true, unique: true})
     readonly owner: string;
     readonly name: string;
     readonly description: string;

@@ -48,6 +48,7 @@ export class Dish {
 
     @Prop({
         required: true,
+        type: Object,
     })
     timeMade: TimeMade;
 
